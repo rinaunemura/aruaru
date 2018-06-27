@@ -32,5 +32,36 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    
+    public function aruarus()
+    {
+        return $this->belongsToMany(Post::class, 'user_favorite', 'user_id', 'favorite_id')->withTimestamps();
+    }
+    
+    public function arune($postId)
+    {
+        $exist = $this->is_arune($postId);
+        
+        if ($exist) {
+            return false;
+        } else {
+            $this->aruarus()->attach($postId);
+            return true;
+        }
+    }
+     public function notarune($postId)
+    {
+        $exist = $this->is_arune($postId);
+        
+        if ($exist) {
+            $this->aruarus()->detach($postId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function is_arune($postId){
+        return $this->aruarus()->where('favorite_id', $postId)->exists();
+    
+    }
 }
-

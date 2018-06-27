@@ -13,9 +13,11 @@ class Controller extends BaseController
     
     public function counts($user) {
         $count_posts = $user->posts()->count();
+        $count_arunes = $user->aruarus()->count();
 
         return [
             'count_posts' => $count_posts,
+            'count_arunes' => $count_arunes,
         ];
     }
 }

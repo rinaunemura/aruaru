@@ -12,4 +12,9 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function aruarus()
+    {
+        return $this->belongsToMany(Post::class, 'user_favorite', 'favorite_id', 'user_id')->withTimestamps();
+    }
 }
