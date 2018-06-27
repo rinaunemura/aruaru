@@ -64,4 +64,11 @@ class User extends Authenticatable
         return $this->aruarus()->where('favorite_id', $postId)->exists();
     
     }
+    public function feed_posts()
+    {
+        $arune_user_ids = $this->aruarus()-> pluck('users.id')->toArray();
+        $arune_user_ids[] = $this->id;
+        return Micropost::whereIn('user_id', $arune_user_ids);
+    }
+    
 }
