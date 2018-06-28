@@ -24,3 +24,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
 
 });
+Route::get('ranking/arune', 'RankingController@arune')->name('ranking.arune');
