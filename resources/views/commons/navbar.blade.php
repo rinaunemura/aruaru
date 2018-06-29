@@ -14,11 +14,13 @@
         @if (Auth::check())
             <li><a href="#rank">RANK OF ARUARU</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nari<!--UserName-->
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }}
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#account">MyPage</a></li>
-            <li><a href="#">Log out</a></li><!--OUT機能を-->
+            <li> 
+                {!! link_to_route('logout.get', 'Logout') !!}
+            </li>
             
           </ul>
         </li>
